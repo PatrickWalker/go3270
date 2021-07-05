@@ -1,1 +1,1 @@
-module github.com/pwalker/go3270
+module github.com/patrickwalker/go3270
