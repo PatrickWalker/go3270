@@ -9,7 +9,7 @@ Example:
 	import (
 		"log"
 
-		"github.com/msalcantara/go3270"
+		"github.com/pwalker/go3270"
 	)
 
 	func main() {

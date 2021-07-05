@@ -159,7 +159,7 @@ func (e *Emulator) query(keyword string) (string, error) {
 
 //createApp create a connection of 3270 with host
 func (e *Emulator) createApp() {
-	cmd := exec.Command("x3270", "-scriptport", e.ScriptPort, e.hostname())
+	cmd := exec.Command("c3270", "-scriptport", e.ScriptPort, e.hostname())
 	go func() {
 		if err := cmd.Run(); err != nil {
 			log.Fatalf("error to create an instance of 3270\n%v\n", err)
@@ -175,7 +175,7 @@ func (e *Emulator) hostname() string {
 
 //execCommand executes a command on the connected x3270 instance
 func (e *Emulator) execCommand(command string) error {
-	cmd := exec.Command("x3270if", "-t", e.ScriptPort, command)
+	cmd := exec.Command("c3270", "-t", e.ScriptPort, command)
 	if err := cmd.Run(); err != nil {
 		return err
 	}
@@ -185,7 +185,7 @@ func (e *Emulator) execCommand(command string) error {
 
 //execCommand executes a command on the connected x3270 instance and return output
 func (e *Emulator) execCommandOutput(command string) (string, error) {
-	cmd := exec.Command("x3270if", "-t", e.ScriptPort, command)
+	cmd := exec.Command("c3270", "-t", e.ScriptPort, command)
 	b, err := cmd.Output()
 	if err != nil {
 		return "", err
